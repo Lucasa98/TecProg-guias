@@ -1,0 +1,6 @@
+(define pi 3.14)
+
+(define perimetro (lambda (r)
+                    (* 2 pi r)
+                    )
+  )

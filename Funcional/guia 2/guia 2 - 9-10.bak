@@ -1,0 +1,18 @@
+;Ejercicio 9
+(define distance2d (lambda (a b)
+                     (let ((x1 (car a)) (x2 (car b)) (y1 (cdr a)) (y2 (cdr b))) ;nombres lindos (?)
+                       (let ((dx (- x1 x2)) (dy (- y1 y2)))                     ;diferencias
+                         (let ((c1 (* dx dx)) (c2 (* dy dy)))                   ;cuadrados
+                           (sqrt (+ c1 c2))
+                          )
+                        )
+                      )
+                     )
+  )
+
+;Ejercicio 10 (en la guia dice 12 anda a saber por qué)
+(define proximo (lambda (p l)
+                  ())
+  )
+
+(distance2d '(1 . 1) '(2 . 2))
