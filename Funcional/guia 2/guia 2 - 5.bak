@@ -1,5 +1,0 @@
-(define length (lambda (x)
-            (if ()
-             )
-           )
-)
