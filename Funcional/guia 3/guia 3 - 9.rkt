@@ -24,7 +24,7 @@
                      (if (null? ls)
                          ()
                          (let ((p (car ls)) (r (cdr ls)))
-                           (cons (string->number p) (convlistaT r))
+                           (cons (abs (string->number p)) (convlistaT r))
                            )
                          )
                      )
@@ -58,4 +58,4 @@
                     )
   )
 
-(convdatos '(("D" (1 2 3 4 5)) ("T" ("6" "7" "8")) ("B" ("V" "F"))))
+(convdatos '(("D" (1 2 3 4 5)) ("T" ("-6" "7" "8")) ("B" ("V" "F"))))
