@@ -1,0 +1,16 @@
+entrada(papas).
+entrada(mani).
+entrada(ensalada).
+
+plato_principal(lomo).
+plato_principal(pollo).
+plato_principal(pasta).
+
+postre(flan).
+postre(helado).
+postre(torta).
+
+carta(X,Y,Z):-entrada(X),plato_principal(Y),postre(Z).
+
+%carta(Entrada, Plato, Postre).
+%27 resultados.

@@ -1,0 +1,15 @@
+ruta(santafe,parana).
+ruta(parana,corrientes).
+ruta(santafe,cordoba).
+ruta(santafe,coronda).
+ruta(santafe,rosario).
+ruta(rosario,capital).
+ruta(rosario,mardelplata).
+ruta(capital,cordoba).
+conectados(X,Y):-ruta(X,Y).
+conectados(X,Y):-ruta(Y,X).
+
+%ruta(Origen,cordoba).
+%ruta(parana,Destino).
+%conectados(parana,cordoba).
+%ruta(santafe,Intermedio),ruta(Intermedio,corrientes).

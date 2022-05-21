@@ -1,0 +1,51 @@
+estrella(sol).
+orbita(sol,mercurio).
+orbita(sol,venus).
+orbita(sol,tierra).
+orbita(sol,marte).
+orbita(sol,jupiter).
+orbita(sol,saturno).
+orbita(sol,urano).
+orbita(sol,neptuno).
+orbita(sol,pluton).
+orbita(tierra,luna).
+orbita(marte,deimos).
+orbita(marte,phobos).
+orbita(jupiter,adrastea).
+orbita(jupiter,aitne).
+orbita(jupiter,amalthea).
+orbita(saturno,aegir).
+orbita(saturno,albiorix).
+orbita(urano,ariel).
+orbita(urano,belinda).
+orbita(neptuno,despina).
+orbita(pluton,charon).
+orbita(pluton,nix).
+orbita(pluton,hydra).
+
+%Predicados
+planeta(P):-orbita(sol,P).
+luna(L):-orbita(P,L),orbita(sol,P).
+lunaDe(P,L):-planeta(P),orbita(P,L).
+
+%Inciso 2:
+%Digamos que no, pero la verdad es que si pero todavia no sabemos como.
+
+%--auxiliares
+%contenido(L,X) true si X esta en la lista L
+contenido([X|R],X).
+contenido([P|R],X):-contenido(R,X).
+%no_repite(L) true si L no tiene elementos repetidos
+no_repite([]).
+no_repite([_|[]]).
+no_repite([P|R]):-not(contenido(R,P)),no_repite(R).
+%--
+
+% Se necesita un predicado que unifique el primer parametro con un
+%planeta y el segundo con la lista de lunas del planeta.
+% Podemos verlo como que la lista no contiene nada que no sean lunas
+%de ese planeta y ademas no hay lunas de ese planeta que no esten
+%en la lista.
+lunas(P,[L|R]):-contenido([L|R],X),orbita(P,X),orbita(P,Y),contenido([L|R],Y),no_repite([L|R]).
+
+%cantidadLunas(P,Cant).

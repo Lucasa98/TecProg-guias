@@ -1,0 +1,12 @@
+menu('Bombones de jamon','Locro','Dulce de batata').
+menu('Bombones de jamon','Locro','Alfajor norteno').
+menu('Tarta de atun','Atados de repollo','Dulce de batata').
+menu('Tarta de atun','Pollo romano con hierbas y vino','Flan').
+menu('Volovanes de atun','Matambre con espinacas y parmesano','Torta moka').
+menu('Bunuelos de bacalao','Pollo romano con hierbas y vino','Alfajor norteno').
+
+%menu(Entrada,Principal,Postre).
+%menu(Entrada,Principal,'Dulce de batata').
+%menu(Entrada,'Locro',Postre).
+%menu(_,'Pato a la naranaja',_).
+%menu('Locro',_,_).

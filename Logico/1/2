@@ -1,0 +1,13 @@
+padre_de(leoncio,alberto).
+padre_de(leoncio,geronimo).
+padre_de(alberto,juan).
+padre_de(alberto,luis).
+padre_de(geronimo,luisa).
+hermano_de(A,B):-padre_de(X,A),padre_de(X,B),A\=B.
+nieto_de(A,B):-padre_de(X,A),padre_de(B,X).
+
+%padre_de(alberto,luis).
+%padre_de(luis,alberto).
+%hermano_de(hermanos,luis).
+%nieto_de(A,luisa).
+%nieto_de(A,N).

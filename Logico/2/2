@@ -1,0 +1,114 @@
+%	   lanona-ilnono
+%	    /	       \
+%juan-pepita		pepito-maria
+%   /   \		    /   \
+%jorge  neneka-martin	nora	marta-mario
+%	   /  \ 		     /  \
+%    javier  Pablo             jacinto  leo
+
+%X es progenitor de Y
+%progenitor(X,Y).
+progenitor(lanona, pepita).
+progenitor(ilnono, pepita).
+progenitor(lanona, pepito).
+progenitor(ilnono, pepito).
+progenitor(pepita, jorge).
+progenitor(juan, jorge).
+progenitor(pepita, neneka).
+progenitor(juan, neneka).
+progenitor(pepito,nora).
+progenitor(maria,nora).
+progenitor(pepito,marta).
+progenitor(maria,marta).
+progenitor(neneka,javier).
+progenitor(martin,javier).
+progenitor(neneka,pablo).
+progenitor(martin,pablo).
+progenitor(marta,jacinto).
+progenitor(mario,jacinto).
+progenitor(marta,leo).
+progenitor(mario,leo).
+
+%H es hombre
+%hombre(H).
+hombre(ilnono).
+hombre(juan).
+hombre(pepito).
+hombre(jorge).
+hombre(martin).
+hombre(mario).
+hombre(javier).
+hombre(pablo).
+hombre(jacinto).
+hombre(leo).
+
+%M es mujer
+%mujer(M)
+mujer(lanona).
+mujer(pepita).
+mujer(maria).
+mujer(neneka).
+mujer(nora).
+mujer(marta).
+
+%El padre de una persona es su progenitor masculino.
+%X es padre de Y
+padre(X,Y):- progenitor(X,Y),hombre(X).
+
+%La madre de una persona es su progenitor femenino.
+%X es madre de Y
+madre(X,Y):-progenitor(X,Y),mujer(X).
+
+%El abuelo de una persona es el padre del padre
+%o el padre de la madre de dicha persona.
+%X es abuelo de Y
+%caso 1:
+abuelo(X,Y):-padre(X,Z),padre(Z,Y).
+%caso 2:
+abuelo(X,Y):-padre(X,Z),madre(Z,Y).
+
+%La abuelaa de una persona es la madre del padre
+%o la madre de la madre de dicha persona.
+%X es abuela de Y
+%caso 1:
+abuela(X,Y):-madre(X,Z),padre(Z,Y).
+%caso 2:
+abuela(X,Y):-madre(X,Z),madre(Z,Y).
+
+%Un hermano de una persona es cualquier persona con los mismos
+%paders y que sea distinto de laa persona en cuestion.
+%X es hermano de Y
+hermano(X,Y):-X\=Y,progenitor(P,X),progenitor(P,Y).
+
+%Un hermano varon de una persona es cualquier persona varon con los
+%mismos padres y que sea distinto de la persona en cuestion
+%X es hermano varon de Y
+hermano_varon(X,Y):-hermano(X,Y),hombre(X).
+
+%Una hermana mujer de una persona es cualquier persona mujer con los
+%mismos padres y que sea distinto de la persona en cuestion
+%X es hermana mujer de Y
+hermana_mujer(X,Y):-hermano(X,Y),mujer(X).
+
+%Un sucesor de una persona es cualquier persona que descienda de esta.
+%X es sucesor de Y
+%Caso base: X hijo de Y
+sucesor(X,Y):-progenitor(Y,X).
+%Caso 1: X hijo de un sucesor de Y
+sucesor(X,Y):-progenitor(P,X),sucesor(P,Y).
+
+%X es madre
+es_madre(X):-madre(X,_).
+
+%X es padre
+es_padre(X):-padre(X,_).
+
+%X es tia de Y
+tia(X,Y):-hermana_mujer(X,P),progenitor(P,Y).
+
+%X es yerno (hijo politico) de Y
+%X tiene un hijx que es hijx de Z (Z no es X), que es hijx de Y.
+yerno(X,Y):-hombre(X),progenitor(X,H),progenitor(Z,H),progenitor(Z,Y),Z\=X.
+%X es nuera de Y
+%Lo mismo que para yerno pero mujer
+nuera(X,Y):-mujer(X),progenitor(X,H),progenitor(Z,H),progenitor(Z,Y).Z\=X.
