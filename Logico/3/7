@@ -1,0 +1,14 @@
+%AUX--eliminar todas las instancias de un elemento de una lista.
+%Caso Base: lista vacia.
+eliminar(_,[],[]):-!.
+%Caso 1: primer elemento coincidente
+eliminar(X,[X|R1],R2):-eliminar(X,R1,R2),!.
+%Caso 2: primer elemento no coincidente
+eliminar(X,[Y|R1],[Y|R2]):-eliminar(X,R1,R2).
+
+%Eliminar los elementos duplicados de una lista
+%Caso Base: lista vacia
+eliminar_dup([],[]):-!.
+%Caso 1: lista no vacia, debe devolver una lista con el primer elemento
+%primero y el resto sin ese elemento ni otros elemento duplicados.
+eliminar_dup([X|R1],[X|R2]):-eliminar(X,R1,R3),eliminar_dup(R3,R2).

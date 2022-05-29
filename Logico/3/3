@@ -1,0 +1,5 @@
+%contar cantidad de elemento de una lista.
+%Caso base: lista vacia
+cantidad([],0):-!.
+%Caso 1: lista no vacia (cant: 1+cantidad del resto)
+cantidad([_|R],C):-cantidad(R,CR),C is CR+1,!.

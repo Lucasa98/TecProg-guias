@@ -1,0 +1,15 @@
+%ordenar([2,4,3,1],LO) -> LO = [1,2,3,4]
+
+%Lo mas facil seria agarrar la funcion para insertar en orden (ej9) e ir
+%insertando uno a uno los elementos.
+
+%Funcion auxiliar. Inserta N en L respetando el orden.
+%insertar(N,L,R).
+insertar(N,[],[N]):-!.
+insertar(N,[P|R],[N|[P|R]]):-N=<P,!.
+insertar(N,[P|R1],[P|R2]):-insertar(N,R1,R2).
+
+%Caso Base 1: lista vacia
+ordenar([],[]):-!.
+%Caso 1: ordenas el resto R e insertas P en R respetando el orden
+ordenar([P|R],LO):-ordenar(R,RO),insertar(P,RO,LO).

@@ -1,0 +1,11 @@
+%profundidad([[[c],b,[d]],a,[[],e,[f]]], Profundidad) -> 3
+
+%Caso Base 1: nodo vacio
+profundidad([],0):-!.
+%Caso Base 2: nodo sin hijos
+profundidad([_],1):-!.
+%Caso 1: rama izquierda mas profunda
+profundidad([I,_,D],P):-profundidad(I,Pi),profundidad(D,Pd),Pi>=Pd,P is Pi+1,!.
+%Caso 2: rama derecha mas profunda. No hace falta verificar porque si no hubiera
+%entrado en el caso anterior.
+profundidad([_,_,D],P):-profundidad(D,Pd),P is Pd+1.

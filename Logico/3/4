@@ -1,0 +1,5 @@
+%sumar los elementos de una lista
+%Caso Base: lista vacia.
+suma([],0):-!.
+%Caso 1: lista no vacia.
+suma([X|R],S):-suma(R,SR),S is SR+X,!.

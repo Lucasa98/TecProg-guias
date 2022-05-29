@@ -1,0 +1,21 @@
+%aplanar([1,[2,[3]]],ListaPlana) -> ListaPlana = [1,2,3]
+
+%---------------------------------
+%Funcion auxiliar: inserta los elementos de una lista en
+%otra(concatena).
+%Caso Base 1: listas vacias
+concatenar([],[],[]):-!.
+%Caso Base 2
+concatenar([],L2,L2):-!.
+%Caso 1: el primer argumento es una lista (insertar y chau)
+concatenar([P1|R1],L2,[P1|R]):-concatenar(R1,L2,R),!.
+%---------------------------------
+
+%Caso Base 1: listaa vacia
+aplanar([],[]):-!.
+%Caso 1: Aplanar una lista. Aplanar el primer elemento (si es atomico
+%no pasa nada). Concatenar el elemento aplanado con el resto aplanado.
+aplanar([P|R],LA):-aplanar(P,PA),aplanar(R,RA),concatenar(PA,RA,LA),!.
+%Caso 2: aplanar un elemento atomico (si llego hasta aca significa
+%que lo es).
+aplanar(E,[E]).

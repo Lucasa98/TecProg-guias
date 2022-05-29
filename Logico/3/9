@@ -1,0 +1,12 @@
+%insertar(3,[1,2,4,5],Resultado) -> Resultado = [1,2,3,4,5]
+%Consiste en recorrer la lista hasta encontrar un numero que sea mayor
+%que el numero a insertar, y lo insertamos a la izquierda de ese
+
+%Caso Base: lista vacia
+insertar(N,[],[N]):-!.
+%Caso 1: el primer elemento es mayor o igual que N
+insertar(N,[P|R],[N|[P|R]]):-N=<P,!.
+%Caso 2: el primer elemento es menor que N (hay que seguir recorriendo).
+%No me fijo si es mayor, porque hubiera entrado y cortado en el predicado
+%anterior
+insertar(N,[P|R1],[P|R2]):-insertar(N,R1,R2).

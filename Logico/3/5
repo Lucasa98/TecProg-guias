@@ -1,0 +1,7 @@
+%listar numeros positivos de una lista
+%Caso Base: lista vacia
+positivos([],[]):-!.
+%Caso 1: primer elemento positivo
+positivos([X|R1],[X|R2]):-X>0,positivos(R1,R2),!.
+%Caso 2: primer elemento no positivo
+positivos([_|R1],LP):-positivos(R1,LP).

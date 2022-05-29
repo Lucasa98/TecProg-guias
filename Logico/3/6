@@ -1,0 +1,6 @@
+%Verificar que dos listas tienen el mismo tamanio y sumar elemento
+%a elemento
+%Caso Base 1: listas vacias (mismo tamanio)
+suma_lista([],[],[]):-!.
+%Caso 1: listas no vacias
+suma_lista([X1|R1],[X2|R2],[S|RS]):-S is X1+X2,suma_lista(R1,R2,RS),!.

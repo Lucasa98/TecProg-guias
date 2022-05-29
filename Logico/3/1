@@ -1,0 +1,6 @@
+%factorial
+%Caso Base: N=0
+factorial(0,1):-!.
+%Caso 1: N>0.
+factorial(N,F):-N2 is N-1,factorial(N2,F2),F is N*F2.
+%factorial(5,Factorial).

@@ -1,0 +1,7 @@
+%contar elementos X en una lista
+%Caso Base: lista vacia
+contar(_,[],0):-!.
+%Caso 1: X se encuentra al principio (cant: 1 + contar X en el resto)
+contar(X,[X|R],C):-contar(X,R,CR),C is CR+1,!.
+%Caso 2: X no es el primer elemento de la lista (cant: contar X en el resto).
+contar(X,[_|R],C):-contar(X,R,C).

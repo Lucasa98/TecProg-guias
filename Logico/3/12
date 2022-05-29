@@ -1,0 +1,13 @@
+%ins(X,L1,L2) genera las distintas formas de insertar X en L1, para
+%formar L2.
+%Inserta X "delante" de L1
+ins(X,L,[X|L]).
+%llama a ins para el mismo X pero con el resto de L1
+ins(X,[Y|L1],[Y|L2]):-ins(X,L1,L2).
+
+%per([X|L],Lp) genera todas las permutaciones de [X|L].
+%Basicamente, genera todas las formas de insertar X (una vez) en cada
+%unas de las permutaciones de L. Donde L es una lista [Y|R], cuyas
+%permutaciones de generan de la misma forma.
+per([],[]).
+per([X|L],Lp):-per(L,L1),ins(X,L1,Lp).
