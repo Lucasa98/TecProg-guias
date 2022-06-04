@@ -1,0 +1,11 @@
+p(1).
+p(2):-!.
+p(3).
+
+%p(X).	->	X=1;
+%		X=2.
+%Esto se debe a que en cuanto toma el valor 2, ejecuta el corte, por lo
+%que se desecha el X=3.
+
+%p(X),p(Y).
+%
